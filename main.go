@@ -17,16 +17,19 @@ func main() {
 	}
 
 	// Initialize the bot
-	discord, err := discordgo.New("Bot " + os.Getenv("BOT_TOKEN"))
+	discord, err := discordgo.New("Bot " + os.Getenv("DISCORD_BOT_TOKEN"))
 	if err != nil {
 		log.Fatalln("ERROR: ", err)
 	}
+
 
 	// Create handler that listens to reactions
 	discord.AddHandler(HandleNewReaction)
 
 	// Start listening
-	discord.Open()
+	if err := discord.Open(); err != nil {
+		log.Fatal("ERROR: ", err)
+	}
 	defer discord.Close()
 	fmt.Println("Bot is running...")
 

@@ -18,6 +18,7 @@ func HandleNewReaction(discord *discordgo.Session, message *discordgo.MessageRea
 	messageDetail, err := discord.ChannelMessage(os.Getenv("CHANNEL_ID"), message.MessageID)
 	if err != nil {
 		fmt.Println("ERROR: `could not get message`")
+		return
 	}
 
 	// Count total reactions
@@ -33,7 +34,15 @@ func HandleNewReaction(discord *discordgo.Session, message *discordgo.MessageRea
 	}
 
 	// Post tweet when there are more reactions than the threshold specified
-	if total_count >= reaction_threshold {
-		CreateTweet(messageDetail)
+	if total_count < reaction_threshold {
+		return
 	}
+
+	// If the tweet was posted successfully
+	if CreateTweet(messageDetail) {
+		fmt.Println("TWEET POSTED SUCCESSFULLY")
+	} else {
+		fmt.Println("THERE HAS BEEN AN ERROR POSTING TWEET")
+	}
+
 }
