@@ -1,0 +1,5 @@
+{
+  "db_path": "messages.txt",
+  "reaction_threshold": 2,
+  "channel_ids": ["1175797847107575808"]
+}
