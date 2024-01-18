@@ -26,7 +26,7 @@ func HandleNewReaction(discord *discordgo.Session, message *discordgo.MessageRea
 	}
 
 	// If the message is older than 72 hours ignore it
-	if time.Now().Sub(messageDetail.Timestamp).Hours() > 72 || database.IsMessagePosted(messageDetail.ID) {
+	if time.Now().Sub(messageDetail.Timestamp).Hours() > float64(config.Config.IgnoreAfterHours) || database.IsMessagePosted(messageDetail.ID) {
 		return
 	}
 

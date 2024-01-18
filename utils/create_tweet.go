@@ -8,9 +8,9 @@ import (
 	"io"
 	"mime/multipart"
 	"net/http"
-	"os"
 	"strings"
 
+	"github.com/AdamAlberty/discord-engagement-tweeter/config"
 	"github.com/bwmarrin/discordgo"
 	oauth1 "github.com/klaidas/go-oauth1"
 
@@ -65,10 +65,10 @@ func CreateTweet(message *discordgo.Message) bool {
 
 	// Construct oauth 1 header for authentication
 	auth := oauth1.OAuth1{
-		ConsumerKey:    os.Getenv("X_CONSUMER_KEY"),
-		ConsumerSecret: os.Getenv("X_CONSUMER_SECRET"),
-		AccessToken:    os.Getenv("X_ACCESS_TOKEN"),
-		AccessSecret:   os.Getenv("X_TOKEN_SECRET"),
+		ConsumerKey:    config.Config.XConsumerKey,
+		ConsumerSecret: config.Config.XConsumerSecret,
+		AccessToken:    config.Config.XAcessToken,
+		AccessSecret:   config.Config.XTokenSecret,
 	}
 	authHeader := auth.BuildOAuth1Header("POST", "https://api.twitter.com/2/tweets",
 		map[string]string{})
@@ -145,10 +145,10 @@ func uploadMedia(attachment *discordgo.MessageAttachment) string {
 
 	// Construct oauth 1 header for authentication
 	auth := oauth1.OAuth1{
-		ConsumerKey:    os.Getenv("X_CONSUMER_KEY"),
-		ConsumerSecret: os.Getenv("X_CONSUMER_SECRET"),
-		AccessToken:    os.Getenv("X_ACCESS_TOKEN"),
-		AccessSecret:   os.Getenv("X_TOKEN_SECRET"),
+		ConsumerKey:    config.Config.XConsumerKey,
+		ConsumerSecret: config.Config.XConsumerSecret,
+		AccessToken:    config.Config.XAcessToken,
+		AccessSecret:   config.Config.XTokenSecret,
 	}
 	authHeader := auth.BuildOAuth1Header("POST", "https://upload.twitter.com/1.1/media/upload.json",
 		map[string]string{})

@@ -22,11 +22,12 @@ func main() {
 
 	// Load config
 	configPath := flag.String("config", "config.json", "Path to config file, defaults to config.json")
+	flag.Parse()
 	config.LoadConfig(configPath)
 	utils.InitMessageDB()
 
 	// Initialize Discord bot
-	discord, err := discordgo.New("Bot " + os.Getenv("DISCORD_BOT_TOKEN"))
+	discord, err := discordgo.New("Bot " + config.Config.DiscordBotToken)
 	if err != nil {
 		log.Fatalln("ERROR: ", err)
 	}
