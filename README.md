@@ -49,4 +49,4 @@ The most probable cause of errors is missing credentials from `.env` file or wro
 
 ## License
 
-[MIT](https://github.com/AdamAlberty/discord-engagement-tweeter/LICENSE)
+[MIT](https://github.com/AdamAlberty/discord-engagement-tweeter/main/LICENSE)
