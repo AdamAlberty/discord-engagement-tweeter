@@ -46,7 +46,3 @@ The last step is to invite the bot to your server.
 ## Troubleshooting
 
 The most probable cause of errors is missing credentials from `.env` file or wrong config format
-
-## License
-
-[MIT](https://github.com/AdamAlberty/discord-engagement-tweeter/main/LICENSE)
