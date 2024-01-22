@@ -11,7 +11,7 @@ To install the bot, clone and `cd` to this repository. Compile the program with 
 
 To run the program run the outputted binary `./discord-engagement-tweeter`.
 
-Optionally, you can run the app with custom config path `./discord-engagement-tweeter --config /path/to/config.json`
+Optionally, you can run the program with custom config path `./discord-engagement-tweeter --config /path/to/config.json`
 
 You should see a message printed in the terminal that says `Bot is running...`
 
